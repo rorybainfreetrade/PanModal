@@ -32,7 +32,8 @@ protocol PanModalPresenter: AnyObject {
     func presentPanModal(_ viewControllerToPresent: PanModalPresentable.LayoutType,
                          sourceView: UIView?,
                          sourceRect: CGRect,
-                         completion: (() -> Void)?)
+                         completion: (() -> Void)?,
+                         displayPopoverForIpad: Bool)
 
 }
 #endif

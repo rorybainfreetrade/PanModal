@@ -42,13 +42,14 @@ extension UIViewController: PanModalPresenter {
     public func presentPanModal(_ viewControllerToPresent: PanModalPresentable.LayoutType,
                                 sourceView: UIView? = nil,
                                 sourceRect: CGRect = .zero,
-                                completion: (() -> Void)? = nil) {
+                                completion: (() -> Void)? = nil,
+                                displayPopoverForIpad: Bool = false) {
 
         /**
          Here, we deliberately do not check for size classes. More info in `PanModalPresentationDelegate`
          */
 
-        if UIDevice.current.userInterfaceIdiom == .pad {
+        if displayPopoverForIpad && UIDevice.current.userInterfaceIdiom == .pad {
             viewControllerToPresent.modalPresentationStyle = .popover
             viewControllerToPresent.popoverPresentationController?.sourceRect = sourceRect
             viewControllerToPresent.popoverPresentationController?.sourceView = sourceView ?? view
